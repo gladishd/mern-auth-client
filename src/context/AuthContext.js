@@ -7,7 +7,8 @@ function AuthContextProvider(props) {
     const [loggedIn, setLoggedIn] = useState(undefined);
 
     async function getLoggedIn() {
-        const loggedInRes = await axios.get("http://localhost:5000/auth/loggedIn");
+        // const loggedInRes = await axios.get("http://localhost:5000/auth/loggedIn");
+        const loggedInRes = await axios.get("https://mern-auth-server-8y95.onrender.com/auth/loggedIn");
         setLoggedIn(loggedInRes.data);
     }
 
@@ -15,10 +16,10 @@ function AuthContextProvider(props) {
         getLoggedIn();
     }, []);
 
-    return <AuthContext.Provider value={{loggedIn, getLoggedIn}}>
+    return <AuthContext.Provider value={{ loggedIn, getLoggedIn }}>
         {props.children}
     </AuthContext.Provider>;
 };
 
 export default AuthContext;
-export {AuthContextProvider};
+export { AuthContextProvider };

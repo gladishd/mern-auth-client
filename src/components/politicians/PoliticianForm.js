@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 
-function PoliticianForm({getPoliticians}) {
+function PoliticianForm({ getPoliticians }) {
 
     const [politicianName, setPoliticianName] = useState("");
 
@@ -10,9 +10,10 @@ function PoliticianForm({getPoliticians}) {
 
         try {
             const politicianData = {
-            name: politicianName,
-        }
-            await axios.post("http://localhost:5000/politician/", politicianData);
+                name: politicianName,
+            }
+            // await axios.post("http://localhost:5000/politician/", politicianData);
+            await axios.post("https://mern-auth-server-8y95.onrender.com/politician/", politicianData);
             getPoliticians();
         } catch (error) {
             console.error(error);
@@ -24,7 +25,7 @@ function PoliticianForm({getPoliticians}) {
             <input type="text" placeholder="Politician name" onChange={(e) => {
                 setPoliticianName(e.target.value);
             }}
-            value={politicianName}
+                value={politicianName}
             />
             <button type="submit">Save new customer</button>
         </form>

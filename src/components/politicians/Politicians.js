@@ -7,19 +7,20 @@ function Politicians() {
     const [politicians, setPoliticians] = useState([]);
 
     async function getPoliticians() {
-        const politicianRes = await axios.get("http://localhost:5000/politician/")
+        // const politicianRes = await axios.get("http://localhost:5000/politician/")
+        const politicianRes = await axios.get("https://mern-auth-server-8y95.onrender.com/politician/")
         setPoliticians(politicianRes.data);
     }
 
-    useEffect(()=> {
+    useEffect(() => {
         getPoliticians();
     }, []);
 
     return (
-    <div>
-        <PoliticianForm getPoliticians={getPoliticians}/>
-        <PoliticianList politicians={politicians} />
-    </div>
+        <div>
+            <PoliticianForm getPoliticians={getPoliticians} />
+            <PoliticianList politicians={politicians} />
+        </div>
     );
 };
 

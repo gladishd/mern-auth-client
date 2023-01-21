@@ -8,7 +8,7 @@ function Login() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
-    const {getLoggedIn} = useContext(AuthContext);
+    const { getLoggedIn } = useContext(AuthContext);
     const navigate = useNavigate();
 
     async function login(e) {
@@ -19,7 +19,8 @@ function Login() {
                 email, password,
             };
 
-            await axios.post("http://localhost:5000/auth/login", loginData);
+            // await axios.post("http://localhost:5000/auth/login", loginData);
+            await axios.post("https://mern-auth-server-8y95.onrender.com/auth/login", loginData);
             await getLoggedIn();
             navigate("/");
         } catch (error) {
@@ -31,15 +32,15 @@ function Login() {
         <div>
             <h1>Log in to your account</h1>
             <form onSubmit={login}>
-                <input type="email" 
-                placeholder="Email"
-                onChange={(e) => setEmail(e.target.value)}
-                value={email} 
+                <input type="email"
+                    placeholder="Email"
+                    onChange={(e) => setEmail(e.target.value)}
+                    value={email}
                 />
-                <input type="password" 
-                placeholder="Password" 
-                onChange={(e) => setPassword(e.target.value)}
-                value={password} 
+                <input type="password"
+                    placeholder="Password"
+                    onChange={(e) => setPassword(e.target.value)}
+                    value={password}
                 />
                 <button type="submit">Log in</button>
             </form>

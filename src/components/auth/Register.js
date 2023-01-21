@@ -20,7 +20,8 @@ function Register() {
                 email, password, passwordVerify,
             };
 
-            await axios.post("http://localhost:5000/auth/", registerData);
+            // await axios.post("http://localhost:5000/auth/", registerData);
+            await axios.post("https://mern-auth-server-8y95.onrender.com/auth/", registerData);
             await getLoggedIn();
             navigate("/");
         } catch (error) {
